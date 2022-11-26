@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+img{height:50%}
+</style>
+
+<h1>Lists des Test passés</h1>
+
+<div class="row">
+{% for test in tests %}
+    {% if test.score > 10%}
+    
+        <div class="card" style="width: 18rem;">
+   
+            <img src={{test.photo}} class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{test.titre}}</h5>
+                <p class="card-text">{{test.description}}</p>
+                <p class="card-text">Score :{{test.score}}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          
+        </div>
+        
+      {% endif %}   
+{% endfor %}
+ </div>   
+ 
+  <h1>Lists des Test échoués</h1>
+  
+  <div class="row">
+    {% for test in tests %}
+    {% if test.score < 10%}
+    
+        <div class="card" style="width: 18rem;">
+   
+            <img src={{test.photo}} class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{test.titre}}</h5>
+                <p class="card-text">{{test.description}}</p>
+                <p class="card-text">Score :{{test.score}}</p>
+                <a href="#" class="btn btn-primary">Refaire le test</a>
+            </div>
+          
+        </div>
+        
+      {% endif %}   
+{% endfor %}
+ </div>   
+ 
+ 
+{% endblock %}
