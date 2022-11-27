@@ -4,12 +4,21 @@ namespace App\Controller\Admin;
 
 use App\Entity\Test;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud; 
+
 
 class TestCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
         return Test::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInPlural('Tests')
+            ->setEntityLabelInSingular('Test');
     }
 
     /*
