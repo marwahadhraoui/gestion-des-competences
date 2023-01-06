@@ -38,6 +38,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $profession = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $lieuResidence = null;
+
+    #[ORM\Column]
+    private ?int $age = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -163,4 +172,47 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getProfession(): ?string
+    {
+        return $this->profession;
+    }
+
+    public function setProfession(string $profession): self
+    {
+        $this->profession = $profession;
+
+        return $this;
+    }
+
+    public function getLieuResidence(): ?string
+    {
+        return $this->lieuResidence;
+    }
+
+    public function setLieuResidence(string $lieuResidence): self
+    {
+        $this->lieuResidence = $lieuResidence;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->age;
+    }
+
+    public function setAge(int $age): self
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+
+    public function __toString()
+    {
+        return strval( $this->id) ;
+    }
+
 }

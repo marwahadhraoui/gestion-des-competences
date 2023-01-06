@@ -1,0 +1,23 @@
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+font-size: 1rem;
+line-height: 2.15;
+padding-left: .75em;
+padding-right: .75em;
+}
+.card-registration .select-arrow {
+top: 13px;
+}
+button{
+    width: 100%;
+}
+#section{
+    background-color :#8AB3FC;
+}
+h3{
+    text-align: center;
+}
+p{
+    text-align: center;
+    margin-top: 15px;
+}
+    

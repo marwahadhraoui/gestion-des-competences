@@ -13,11 +13,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 img{height:50%}
 </style>
 
-<h1>Lists des Test passés</h1>
+<h1><b>Lists of Passed Tests</b></h1>
 
 <div class="row">
 {% for test in tests %}
-    {% if test.score > 10%}
+    {% if test.score == 10%}
     
         <div class="card" style="width: 18rem;">
    
@@ -26,7 +26,12 @@ img{height:50%}
                 <h5 class="card-title">{{test.titre}}</h5>
                 <p class="card-text">{{test.description}}</p>
                 <p class="card-text">Score :{{test.score}}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                
+                {# send the name of the test #}
+                <form action="{{path('app_test')}}" methode="POST">
+                <input type="hidden" name="titre" id="titre" value={{test.titre}} >
+                <button class="btn btn-primary" type="submit">Go to Test</button>
+                </form>
             </div>
           
         </div>
@@ -35,7 +40,7 @@ img{height:50%}
 {% endfor %}
  </div>   
  
-  <h1>Lists des Test échoués</h1>
+  <h1><b>Failed Test Lists</b></h1>
   
   <div class="row">
     {% for test in tests %}
@@ -48,12 +53,37 @@ img{height:50%}
                 <h5 class="card-title">{{test.titre}}</h5>
                 <p class="card-text">{{test.description}}</p>
                 <p class="card-text">Score :{{test.score}}</p>
-                <a href="#" class="btn btn-primary">Refaire le test</a>
+                <form action="{{path('app_test')}}" methode="POST">
+                <input type="hidden" name="titre" id="titre" value={{test.titre}} >
+                <button class="btn btn-primary" type="submit">redo the test</button>
+                </form>
             </div>
           
         </div>
         
       {% endif %}   
+{% endfor %}
+ </div>   
+ 
+ <h1><b>Training Lists</b></h1>
+  
+  <div class="row">
+    {% for formation in formations %}
+    
+    
+        <div class="card" style="width: 18rem;">
+   
+            <img src={{formation.photo}} class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><b>{{formation.titre}}</b></h5>
+                <p class="card-text">{{formation.description}}</p>
+              
+                <a href="#" class="btn btn-primary">Start now</a>
+            </div>
+          
+        </div>
+        
+      
 {% endfor %}
  </div>   
  

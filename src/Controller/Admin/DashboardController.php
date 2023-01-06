@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Categorie;
+use App\Entity\Formation;
+use App\Entity\Profil;
 use App\Entity\Test;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -19,7 +21,9 @@ class DashboardController extends AbstractDashboardController
     public function index(): Response
     {
       
-         return $this->render('admin/dashboard.html.twig');
+          return $this->render('admin/dashboard.html.twig');
+        //return parent::index();
+       
     }
 
     public function configureDashboard(): Dashboard
@@ -34,5 +38,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Utilisateurs', 'fa-solid fa-users', User::class);
         yield MenuItem::linkToCrud('Tests', 'fas fa-list', Test::class);
         yield MenuItem::linkToCrud('Categories','fas fa-list', Categorie::class);
+        yield MenuItem::linkToCrud('Formation','fas fa-list', Formation::class);
+        yield MenuItem::linkToCrud('Profil','fa fa-user', Profil::class);
     }
 }
